@@ -26,14 +26,14 @@ something like this: `while(mag(z) <= 2 && iter < max_iter)`  <br>
 This algorithm is less known, by me too as it was my first time implementing it.
 It checks if the sum of the derivatives is  bigger than a given value, in which case it stops.<br>
 This algorithm has the benefit of showing some structures inside the bulbs<br>
-According to wikipedia, the derivative $z'_n$ at $z_n$, with $n$  the iteration number, is given by: <br>
-$z'_n = 2*z'_{n-1}*z_{n-1} +1$<br><br>
+According to wikipedia, the derivative $z^\prime_n$ at $z_n$, with $n$  the iteration number, is given by: <br>
+$z^\prime_n = 2*z^\prime_{n-1}*z_{n-1}+1$ <br><br>
 Wikipedia also gave a python sample which I translated in glsl for my first attempt at implementing it in fs_derivative.glsl: <br>
 ![Derivative 1](https://raw.githubusercontent.com/418Cat/gpu-mandelbrot/refs/heads/main/images/derivative_1.png)
 <br><br>
 
 
-My second attempt in fs_derivative.glsl used the definition, and with a few tweaks for the coloring, seems to give satisfying results: <br>
+My second attempt in fs_derivative_2.glsl used the definition, and with a few tweaks for the coloring, seems to give satisfying results: <br>
 ![Derivative 1](https://raw.githubusercontent.com/418Cat/gpu-mandelbrot/refs/heads/main/images/derivative_2.png)
 <br><br>
 
