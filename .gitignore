@@ -1,0 +1,5 @@
+build/**
+.cache/**
+*.swp
+.session.vim
+compile_commands.json
