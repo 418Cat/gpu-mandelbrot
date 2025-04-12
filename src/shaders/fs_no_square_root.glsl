@@ -57,6 +57,7 @@ void main()
 	float iters = mand_iter(uv);
 	
 	vec3 color = vec3(iters/u_max_iter);
+	if(iters == u_max_iter) color = vec3(0.);
 	
 	out_color = vec4(color, 1.);
 }

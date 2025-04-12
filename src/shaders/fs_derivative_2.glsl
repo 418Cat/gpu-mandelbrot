@@ -51,22 +51,25 @@ float mand_der(vec2 coords, float limit)
 {
     float dbail = 1.e6;
 
-    vec2 c = coords;
-    vec2 dc = u_z;
-	vec2 dc_sum = vec2(0.);
+	vec2 z_prime = vec2(0.);
+	vec2 z_prime_last = vec2(0.);
+	vec2 z_last = coords; 
+
+	vec2 z_prime_sum = vec2(0.);
 
 	float n = 0.;
 	
 	while(n < limit)
 	{
-		c = mult_compl(c, c) + coords;
-		dc = 2.* mult_compl(dc, c) + 1.;
-        dc_sum += dc;
+		z_prime = 2.* z_prime_last*z_last + 1.;
+		z_prime_last = z_prime;
+		z_last = mult_compl(z_last, z_last) + coords;
 
-		n++;
+		z_prime_sum += z_prime;
 
-		if(dc_sum.x*dc_sum.x + dc_sum.y*dc_sum.y > dbail)
+		if(z_prime_sum.x*z_prime_sum.x + z_prime_sum.y*z_prime_sum.y > dbail)
 			return n;
+		n++;
 	}
 	return 0.;
 }
@@ -86,9 +89,9 @@ void main()
 	//else
 	{
 		color = vec3(1.);
-		color.r = log(iters)/log(u_max_iter); 
-		color.g = cos(iters)/log(cos(u_max_iter)); 
-		color.b = log(2.+cos(iters));
+		color.r = log(iters)/log2(u_max_iter); 
+		color.g = cos(iters/u_zoom)/cos(log(u_max_iter)); 
+		color.b = log(2.+cos(iters/5.));
 	}
 	out_color = vec4(color, 1.);
 }

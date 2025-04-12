@@ -72,6 +72,7 @@ int main()
 		Shader("src/shaders/vs.glsl", "src/shaders/fs_square_z_check.glsl"),
 		Shader("src/shaders/vs.glsl", "src/shaders/fs_no_square_root.glsl"),
 		Shader("src/shaders/vs.glsl", "src/shaders/fs_derivative.glsl"),
+		Shader("src/shaders/vs.glsl", "src/shaders/fs_derivative_2.glsl"),
 		Shader("src/shaders/vs.glsl", "src/shaders/fs_continuous.glsl"),
 	};
 
@@ -82,6 +83,7 @@ int main()
 		"Square check if z in +-2",
 		"No square root check if |z| < 2",
 		"Derivative bailout",
+		"Other derivative bailout",
 		"Continuous coloring"
 	};
 

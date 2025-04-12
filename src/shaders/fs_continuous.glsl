@@ -71,10 +71,12 @@ void main()
 		   it's especially noticeable with continuous
 		   coloring
 		*/
-		color = vec3(pow(iters/u_max_iter, 1./2.2));
-	//	color.r = cos(log(iters)/log(u_max_iter));
-	//	color.g = log(iters)/u_max_iter;
-	//	color.b = iters/u_max_iter; 
+		//color = vec3(pow(iters/u_max_iter, 1./2.2));
+		color.r = cos(log(iters)/log(u_max_iter) + log2(iters));
+		//color.g = log(iters)/u_max_iter;
+		color.g = (cos((iters)/8.)+1.)*0.6; 
+		color.b = sin((iters/log(iters))/5.)*.5 + 7.; 
+		//color.b = sin(log2(iters)/(log(u_max_iter)*3.))*.5 + 1.; 
 	}
 	out_color = vec4(color, 1.);
 }
